@@ -1,0 +1,451 @@
+.bill-wrapper {
+    background: linear-gradient(to bottom right, #f0f4f8, #dbeafe);
+    min-height: 100vh;
+    font-family: Arial, sans-serif;
+  
+    header {
+      display: flex;
+      align-items: center;
+      padding: 1rem;
+      .logo {
+        height: 40px;
+      }
+    }
+  
+    .bill-form {
+      background: #fff;
+      max-width: 70%;
+      margin: 30px auto;
+      padding: 25px 18px;
+      border-radius: 12px;
+      box-shadow: 0 4px 18px 2px #c9e4f9aa;
+  
+      .form-section {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 18px;
+        margin-bottom: 14px;
+  
+        .field {
+          flex: 1 1 210px;
+          display: flex;
+          flex-direction: column;
+          margin-bottom: 5px;
+  
+          label {
+            font-weight: bold;
+            margin-bottom: 2px;
+          }
+          input {
+            padding: 6px;
+            border: 1px solid #bcd0ed;
+            border-radius: 4px;
+          }
+        }
+      }
+  
+      .product-table {
+        width: 100%;
+        margin: 18px 0;
+        border-collapse: collapse;
+  
+        th, td {
+          border: 1px solid #e3e8ee;
+          padding: 6px 4px;
+          text-align: center;
+        }
+        th {
+          background: #e3e8ee;
+          font-size: 15px;
+        }
+        button {
+          border: none;
+          background: transparent;
+          font-size: 1.1em;
+          cursor: pointer;
+        }
+      }
+  
+      .add-btn {
+        background: #1976d2;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        padding: 7px 20px;
+        margin-bottom: 18px;
+        font-size: 15px;
+        cursor: pointer;
+        margin-left: 5px;
+        margin-top: 5px;
+      }
+  
+      .note {
+        margin-bottom: 20px;
+        label {
+          display: block;
+          margin-bottom: 3px;
+          font-weight: 700;
+        }
+        input {
+          width: 100%;
+          padding: 6px;
+        }
+      }
+  
+      button[type="submit"] {
+        background: #0d9488;
+        color: white;
+        border: none;
+        border-radius: 6px;
+        font-size: 17px;
+        padding: 11px 40px;
+        margin-top: 10px;
+        cursor: pointer;
+        transition: background 0.2s;
+        &:disabled {
+          background: #a7f3d0;
+          cursor: not-allowed;
+        }
+      }
+    }
+  }
+  
+  @media (max-width: 600px) {
+    .bill-wrapper .bill-form {
+      padding: 8px;
+    }
+    .bill-wrapper .form-section {
+      flex-direction: column;
+      gap: 7px;
+    }
+    .bill-wrapper .product-table th,
+    .bill-wrapper .product-table td {
+      font-size: 13px;
+      padding: 3px;
+    }
+  }
+  
+
+
+//   new table 
+// @import "compass/css3";
+
+// More practical CSS...
+// using mobile first method (IE8,7 requires respond.js polyfill https://github.com/scottjehl/Respond)
+
+$breakpoint-alpha: 480px; // adjust to your needs
+
+.rwd-table {
+  margin: 1em 0;
+  min-width: 300px; // adjust to your needs
+  
+  tr {
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  th {
+    display: none; // for accessibility, use a visually hidden method here instead! Thanks, reddit!   
+  }
+  
+  td {
+    display: block; 
+    
+    &:first-child {
+      padding-top: .5em;
+    }
+    &:last-child {
+      padding-bottom: .5em;
+    }
+
+    &:before {
+      content: attr(data-th)": "; // who knew you could do this? The internet, that's who.
+      font-weight: bold;
+
+      // optional stuff to make it look nicer
+      width: 6.5em; // magic number :( adjust according to your own content
+      display: inline-block;
+      // end options
+      
+      @media (min-width: $breakpoint-alpha) {
+        display: none;
+      }
+    }
+  }
+  
+  th, td {
+    text-align: left;
+    
+    @media (min-width: $breakpoint-alpha) {
+      display: table-cell;
+      padding: .25em .5em;
+      
+      &:first-child {
+        padding-left: 0;
+      }
+      
+      &:last-child {
+        padding-right: 0;
+      }
+    }
+
+  }
+  
+  
+}
+
+
+// presentational styling
+
+// @import 'https://fonts.googleapis.com/css?family=Montserrat:300,400,700';
+
+body {
+  padding: 0 2em;
+  font-family: Montserrat, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  color: #444;
+  background: #eee;
+}
+
+h1 {
+  font-weight: normal;
+  letter-spacing: -1px;
+  color: #34495E;
+}
+
+.rwd-table {
+  background: #34495E;
+  color: #fff;
+  border-radius: .4em;
+  overflow: hidden;
+  tr {
+    border-color: lighten(#34495E, 10%);
+  }
+  th, td {
+    margin: .5em 1em;
+    @media (min-width: $breakpoint-alpha) { 
+      padding: 1em !important; 
+    }
+  }
+  th, td:before {
+    color: #dd5;
+  }
+}
+
+.form-label {
+  font-weight: 600;;
+  color: #444;
+}
+// download button
+/* From Uiverse.io by Na3ar-17 */ 
+.container-btn-new {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.label {
+  background-color: black;
+  border: 2px solid rgb(91, 91, 240);
+  display: flex;
+  align-items: center;
+  border-radius: 50px;
+  width: 160px;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  padding: 5px;
+  position: relative;
+}
+
+.label::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #fff;
+  width: 8px;
+  height: 8px;
+  transition: all 0.4s ease;
+  border-radius: 100%;
+  margin: auto;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.label .input {
+  display: none;
+}
+
+.label .title {
+  font-size: 17px;
+  color: #fff;
+  transition: all 0.4s ease;
+  position: absolute;
+  right: 18px;
+  // bottom: 14px;
+  margin-bottom: 0px!Important;
+  text-align: center;
+}
+
+.label .title:last-child {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.label .circle {
+  height: 45px;
+  width: 45px;
+  border-radius: 50%;
+  background-color: rgb(91, 91, 240);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.4s ease;
+  position: relative;
+  box-shadow: 0 0 0 0 rgb(255, 255, 255);
+  overflow: hidden;
+}
+
+.label .circle .icon {
+  color: #fff;
+  width: 30px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: all 0.4s ease;
+}
+
+.label .circle .square {
+  aspect-ratio: 1;
+  width: 15px;
+  border-radius: 2px;
+  background-color: #fff;
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: all 0.4s ease;
+}
+
+.label .circle::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  background-color: #3333a8;
+  width: 100%;
+  height: 0;
+  transition: all 0.4s ease;
+}
+
+.label:has(.input:checked) {
+  width: 57px;
+  animation: installed 0.4s ease 3.5s forwards;
+}
+
+.label:has(.input:checked)::before {
+  animation: rotate 3s ease-in-out 0.4s forwards;
+}
+
+.label .input:checked + .circle {
+  animation:
+    pulse 1s forwards,
+    circleDelete 0.2s ease 3.5s forwards;
+  rotate: 180deg;
+}
+
+.label .input:checked + .circle::before {
+  animation: installing 3s ease-in-out forwards;
+}
+
+.label .input:checked + .circle .icon {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.label .input:checked ~ .circle .square {
+  opacity: 1;
+  visibility: visible;
+}
+
+.label .input:checked ~ .title {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.label .input:checked ~ .title:last-child {
+  animation: showInstalledMessage 0.4s ease 3.5s forwards;
+}
+
+@keyframes pulse {
+  0% {
+    scale: 0.95;
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7);
+  }
+  70% {
+    scale: 1;
+    box-shadow: 0 0 0 16px rgba(255, 255, 255, 0);
+  }
+  100% {
+    scale: 0.95;
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+  }
+}
+
+@keyframes installing {
+  from {
+    height: 0;
+  }
+  to {
+    height: 100%;
+  }
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(-90deg) translate(27px) rotate(0);
+    opacity: 1;
+    visibility: visible;
+  }
+  99% {
+    transform: rotate(270deg) translate(27px) rotate(270deg);
+    opacity: 1;
+    visibility: visible;
+  }
+  100% {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+@keyframes installed {
+  100% {
+    width: 150px;
+    border-color: rgb(35, 174, 35);
+  }
+}
+
+@keyframes circleDelete {
+  100% {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+@keyframes showInstalledMessage {
+  100% {
+    opacity: 1;
+    visibility: visible;
+    right: 56px;
+  }
+}

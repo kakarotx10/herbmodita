@@ -1,0 +1,104 @@
+<div class="bill-wrapper">
+    <header>
+      <img src="../../../assets/logo.avif" alt="Site Logo" class="logo" />
+    </header>
+  
+    <form #newForm="ngForm" (ngSubmit)="onSubmit(newForm.value)" ngNativeValidate class="bill-form">
+  <!-- 1st Row: Invoice and Date/Time -->
+  <div class="row g-3">
+    <div class="col-md-6">
+      <label class="form-label">Invoice Number</label>
+      <input class="form-control" name="invoiceNumber" [(ngModel)]="form.invoiceNumber" required />
+    </div>
+    <div class="col-md-6">
+       <label  class="form-label">Date & Time</label>
+      <input class="form-control" [value]="now | date:'dd/MM/yyyy, hh:mm a'" readonly />
+    </div>
+  </div>
+
+  <!-- 2nd Row: Customer, Address, Mobile -->
+  <div class="row g-3 mt-3">
+    <div class="col-md-4">
+       <label  class="form-label">Customer Name</label>
+      <input class="form-control" name="customerName" [(ngModel)]="form.customerName" required />
+    </div>
+    <div class="col-md-4">
+       <label  class="form-label">Mobile No.</label>
+      <input class="form-control" name="mobile" [(ngModel)]="form.mobile" required />
+    </div>
+      <div class="col-md-4">
+       <label  class="form-label">Drug License No.</label>
+      <input class="form-control" name="drugLicense" [(ngModel)]="form.drugLicense" />
+    </div>
+    <div class="col-md-6">
+       <label  class="form-label">Address</label>
+      <textarea name="address" class="form-control" [(ngModel)]="form.address" required></textarea>
+    </div>
+     <div class="col-md-6">
+       <label  class="form-label">PAN No.</label>
+      <input class="form-control" name="pan" [(ngModel)]="form.pan" />
+    </div>
+    
+  </div>
+
+  <!-- 3rd Row: Drug License, PAN -->
+  <!-- <div class="row g-3 mt-3">
+  
+    <div class="col-md-6">
+       <label  class="form-label">PAN No.</label>
+      <input class="form-control" name="pan" [(ngModel)]="form.pan" />
+    </div>
+  </div> -->
+
+  <!-- Rest of your code remains same... -->
+  <!-- Products Table, Note, and Submit Button -->
+
+   <h3 class="mt-4">Products</h3>
+    <div style="overflow-x: auto;" class="w-100 ">
+        <table class="rwd-table w-100">
+            <thead>
+              <tr>
+                <th>Product</th>
+                <th>MRP (Incl. GST)</th>
+                <th>Discount</th>
+              
+                <th>Final Rate</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let p of form.products; let i = index">
+                <td>{{ p.name }}</td>
+                <td> {{p.mrp | number:'1.2-2'}}</td>
+                <!-- <td> {{p.basePrice | number:'1.2-2'}}</td> -->
+                <td>
+                  <input style="width: auto;"  class="form-control"type="number"
+                         [(ngModel)]="p.discount"
+                         name="discount-{{i}}"
+                         (input)="updateProduct(i)"
+                        
+                          />
+                </td>
+                <td> {{p.finalPrice | number:'1.2-2'}}</td>
+                <!-- <td> {{p.gstAmt | number:'1.2-2'}}</td>
+                <td> {{p.finalRate | number:'1.2-2'}}</td> -->
+              </tr>
+            </tbody>
+          </table>
+    </div>
+
+  <!-- <div class="row g-3 mt-3">
+    <div class="col-md-12">
+       <label  class="form-label">Discount Scheme/Note</label>
+      <input class="form-control" name="note" [(ngModel)]="form.note" placeholder="e.g. MEDICOPARTNER" />
+    </div>
+  </div> -->
+  
+  <button id="btn-submit" type="submit" class="btn btn-success mt-4 bg-danger" [disabled]="newForm.invalid">Download </button>
+ 
+</form>
+
+  </div>
+  
+
+  <pre>{{ newForm?.invalid | json }}</pre>
+<pre>{{ form | json }}</pre>
