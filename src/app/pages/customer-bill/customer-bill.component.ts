@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import * as pdfMake from 'pdfmake/build/pdfmake';
 import * as pdfFonts from 'pdfmake/build/vfs_fonts';
 import { base64 } from './base64';
+import { logo64 } from './logobase64';
 (pdfMake as any).vfs = pdfFonts.vfs;
 
 @Component({
@@ -158,7 +159,7 @@ export class CustomerBillComponent implements OnInit {
       content: [
         // Logo centered (remove columns, use alignment: 'center')
         {
-          image: this.getLogoBase64(),
+          image: this.getHerbModitaLogo(),
           width: 200,
           alignment: 'center',
           margin: [0, 0, 0, 0],
@@ -450,5 +451,8 @@ export class CustomerBillComponent implements OnInit {
   getLogoBase64() {
     // Use your real logo from base64.ts
     return 'data:image/png;base64,' + base64;
+  }
+  getHerbModitaLogo(){
+    return logo64;
   }
 }
